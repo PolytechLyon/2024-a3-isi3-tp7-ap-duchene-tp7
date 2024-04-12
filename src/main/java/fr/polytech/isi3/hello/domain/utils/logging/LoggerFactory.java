@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 public class LoggerFactory {
 
     @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Logger getLogger(InjectionPoint injectionPoint) {
         String name = injectionPoint.getMember().getDeclaringClass().getSimpleName();
         return new ConsoleLogger(name);
