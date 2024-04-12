@@ -21,3 +21,13 @@ Dans `GreetingController`, les dépendances sont injectées dans le constructeur
 # Exercice 4
 
 Le service qui permet de générer la bonne solution est GreetingService.
+
+# Exercice 5
+
+fetch("/api/greeting")
+fetch("/api/locales")
+fetch("/api/me", { method: "POST", body, headers})
+fetch("/api/me", { method: 'DELETE' })
+fetch("/api/users", { method: "POST", body, headers })
+
+Non, il manque les méthodes pour gérer les requêtes PUT et DELETE.
