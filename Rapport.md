@@ -40,3 +40,7 @@ Par exemple, dans le code, dès que NotFoundException ou UnauthorizedException e
 @ResponseStatus : Elle sert à définir le code HTTP qui sera renvoyé lorsque la méthode est appelé.
 
 @RestControllerAdvice: Elle sert à a définir une classe qui contient les méthodes @Exceptionhandler pour gérer les exceptions à l'échelle de l'application.
+
+# Exercice 7
+
+@Service est utilisée pour marquer une classe comme un Service.
