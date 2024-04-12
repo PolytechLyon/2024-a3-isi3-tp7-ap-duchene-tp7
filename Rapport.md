@@ -12,3 +12,8 @@ Il faut encrypter le password dans le SimpleLoginService
 @Scope est une annotation qui est utilisée pour définir la portée d'un bean. Ici, le scope est un Singleton, ce qui veut dire que Spring créera une seule instance de ce bean pour toute l'application.
 
 La classe InjectionPoint st utilisée par Spring pour stocker des informations sur le point d'injection actuel. Dans notre cas, elle est utilisée pour obtenir le nom de la classe où le bean Logger est injecté
+
+# Exercice 3
+
+La classe MeController dépend de LoginService en utilisant @Autowired. 
+Dans `GreetingController`, les dépendances sont injectées dans le constructeur. 
