@@ -2,6 +2,7 @@ package fr.polytech.isi3.hello.controller;
 
 import fr.polytech.isi3.hello.domain.common.UnauthorizedException;
 import fr.polytech.isi3.hello.domain.greeting.Greeting;
+import fr.polytech.isi3.hello.domain.greeting.GreetingService;
 import fr.polytech.isi3.hello.domain.login.LoginService;
 import fr.polytech.isi3.hello.domain.login.UserInfo;
 import fr.polytech.isi3.hello.domain.utils.logging.Logger;
@@ -26,12 +27,12 @@ public class GreetingController {
      * @param logger                logger
      * @param loginService          login service
      */
-    public GreetingController(
-            Logger logger,
-            LoginService loginService
-    ) {
+    private final GreetingService greetingService;
+
+    public GreetingController(Logger logger, LoginService loginService, GreetingService greetingService) {
         this.logger = logger;
         this.loginService = loginService;
+        this.greetingService = greetingService;
     }
 
     /**
@@ -47,9 +48,7 @@ public class GreetingController {
     ) {
         this.logger.log("Saying hello");
         return this.loginService.getUserForToken(token)
-                .map(UserInfo::username)
-                .map("Hi, %s!"::formatted)
-                .map(Greeting::new)
+                .map(user -> this.greetingService.greet(user))
                 .orElseThrow(UnauthorizedException::new);
     }
 }
