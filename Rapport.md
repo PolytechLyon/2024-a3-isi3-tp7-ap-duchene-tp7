@@ -31,3 +31,12 @@ fetch("/api/me", { method: 'DELETE' })
 fetch("/api/users", { method: "POST", body, headers })
 
 Non, il manque les méthodes pour gérer les requêtes PUT et DELETE.
+
+# Exercice 6
+
+@ExceptionHandler: Cette annotation est utilisée pour définir une méthode qui sera utilisée pour gérer une exception spécifique.
+Par exemple, dans le code, dès que NotFoundException ou UnauthorizedException est levée, la méthode handle sera appelée pour gérer l'exception.
+
+@ResponseStatus : Elle sert à définir le code HTTP qui sera renvoyé lorsque la méthode est appelé.
+
+@RestControllerAdvice: Elle sert à a définir une classe qui contient les méthodes @Exceptionhandler pour gérer les exceptions à l'échelle de l'application.
