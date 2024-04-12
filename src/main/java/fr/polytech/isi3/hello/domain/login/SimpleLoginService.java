@@ -35,7 +35,7 @@ public class SimpleLoginService implements LoginService {
         String username = credentials.username();
         String password = credentials.password();
         // Stored passwords are encrypted
-        String encryptedPassword = password;
+        String encryptedPassword = this.encrypter.encrypt(password);
         UserInfo userInfo = this.repository.retrieve(username)
                 .filter(user -> encryptedPassword.equals(user.password()))
                 .map(UserInfo::from)
