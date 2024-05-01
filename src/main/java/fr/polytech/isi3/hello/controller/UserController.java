@@ -5,12 +5,7 @@ import fr.polytech.isi3.hello.domain.common.NotFoundException;
 import fr.polytech.isi3.hello.domain.user.User;
 import fr.polytech.isi3.hello.domain.user.UserService;
 import fr.polytech.isi3.hello.domain.utils.logging.Logger;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * User controller.
@@ -61,5 +56,19 @@ public class UserController {
     ) throws DuplicateKeyException {
         this.logger.log("Creating user %s.", user.username());
         return this.userService.create(user);
+    }
+
+    @PutMapping("/{username}")
+    public User update(@PathVariable String username, @RequestBody User user) throws NotFoundException {
+        if(this.userService.retrieve(username).isEmpty()) {
+            throw new NotFoundException();
+        }
+        user = user.withUsername(username);
+        return this.userService.update(user);
+    }
+
+    @DeleteMapping("/{username}")
+    public void delete(@PathVariable String username) throws NotFoundException {
+        this.userService.delete(username);
     }
 }

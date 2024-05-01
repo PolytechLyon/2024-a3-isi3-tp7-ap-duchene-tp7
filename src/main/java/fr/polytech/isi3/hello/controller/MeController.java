@@ -26,8 +26,11 @@ public class MeController {
 
     public static final String TOKEN_COOKIE_NAME = "token";
 
-    @Autowired
-    private LoginService loginService;
+    private final LoginService loginService;
+
+    public MeController(LoginService loginService) {
+        this.loginService = loginService;
+    }
 
     /**
      * Log in user.

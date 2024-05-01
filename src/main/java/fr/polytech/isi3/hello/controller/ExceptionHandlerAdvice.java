@@ -1,5 +1,6 @@
 package fr.polytech.isi3.hello.controller;
 
+import fr.polytech.isi3.hello.domain.common.DuplicateKeyException;
 import fr.polytech.isi3.hello.domain.common.NotFoundException;
 import fr.polytech.isi3.hello.domain.common.UnauthorizedException;
 import fr.polytech.isi3.hello.domain.utils.logging.Logger;
@@ -48,6 +49,12 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public void handle(UnauthorizedException ex) {
+        this.log(ex);
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public void handle(DuplicateKeyException ex) {
         this.log(ex);
     }
 }
